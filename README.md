@@ -1,4 +1,4 @@
-*forked from [Rolias/PropertyHelper.h](https://gist.github.com/Rolias/48d453a0490d36090193)*
+*modified from [Rolias/PropertyHelper.h](https://gist.github.com/Rolias/48d453a0490d36090193)*
 
 # Overview
 These macros are intended to reduce the amount of boilerplate code the user has to write when using the Qt Frameworks's Q_PROPERTY feature. The idea was to provide something similar to C#'s auto property feature.
@@ -30,15 +30,29 @@ READONLY_PROPERTY(TYPE, NAME)
 will create a standard
 
 ```c
-Q_PROPERTY( TYPE NAME READ NAME CONST)
+Q_PROPERTY(TYPE NAME READ NAME CONST)
 ```
 
-It will create the getter and the member variable name. It also creates a **private** setter function. The function is just named NAME, i.e. it doesn't use a set prefix. In this macro, the member variable again uses `a_` but the user is expected to initialize this variable directly. All reads of the variable should be done through the property for consistency.
+It will create the getter and the member variable name. In this macro, the member variable again uses `a_` but the user is expected to initialize this variable directly. All reads of the variable should be done through the property for consistency.
+
+## The Third Macro
+```c
+READ_PROPERTY(TYPE, NAME)
+```
+
+will create a standard
+
+```c
+Q_PROPERTY(TYPE NAME READ NAME NOTIFY NAMEChanged)
+```
+
+It like the `READONLY_PROPERTY` but the variable can be `WRITE` the new value only in C++ code.
 
 ## Example Usages
 ```c
  AUTO_PROPERTY(QString, myProperty)
  READONLY_PROPERTY(double, myValueProp)
+ READ_PROPERTY(double, myValueProp)
 ```
 
 ## Usage Notes
