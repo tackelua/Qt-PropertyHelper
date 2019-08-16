@@ -1,4 +1,4 @@
-forked from [Rolias/PropertyHelper.h](https://gist.github.com/Rolias/48d453a0490d36090193)
+*forked from [Rolias/PropertyHelper.h](https://gist.github.com/Rolias/48d453a0490d36090193)*
 
 # Overview
 These macros are intended to reduce the amount of boilerplate code the user has to write when using the Qt Frameworks's Q_PROPERTY feature. The idea was to provide something similar to C#'s auto property feature.
